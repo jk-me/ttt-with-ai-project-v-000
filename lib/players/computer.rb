@@ -9,7 +9,6 @@ class Players
         x=['1','3','7','9'].sample until board.valid_move?(x)
         x
       else
-        #puts'pie'
         selfwins=[]
         blockwins=[]
         other=['X','O']-[self.token]
