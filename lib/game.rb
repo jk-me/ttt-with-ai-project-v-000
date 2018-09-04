@@ -68,7 +68,7 @@ class Game
   end
 
   
-    def self.start
+  def self.start
     compx=Players::Computer.new('X')
     compo=Players::Computer.new('O')
     humx=Players::Human.new('X')
@@ -123,5 +123,3 @@ class Game
 
 end
 
-
-end
