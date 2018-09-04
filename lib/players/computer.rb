@@ -17,7 +17,6 @@ class Players
           g.each{|combo|       
             if combo.select{|n| board.cells[n]==self.token}.length==2 and combo.select{|n| board.valid_move?("#{n+1}")}.length==1
             selfwin = combo
-            puts selfwin
             end
           }
           if selfwin!=[]
@@ -29,7 +28,6 @@ class Players
           g.each{|combo|        
             if combo.select{|n| board.cells[n]==other[0]}.length==2 and combo.select{|n| board.valid_move?("#{n+1}")}.length==1
             blockwin = combo
-            puts blockwin
             end
           }
           if blockwin!=[]
