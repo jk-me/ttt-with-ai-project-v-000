@@ -59,11 +59,14 @@ class Game
     end
     if draw?
       puts "Cat's Game!"
+      board.display
     else
       w=winner
       puts "Congratulations #{w}!"
+      board.display
     end
   end
+
   
     def self.start
     compx=Players::Computer.new('X')
