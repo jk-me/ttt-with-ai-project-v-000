@@ -103,7 +103,6 @@ class Game
       until count==100
         g=Game.new(compx,compo,b)
         g.play
-       #puts 'pie'
         won+=1 if g.won?
         count+=1
         g.board.reset!
