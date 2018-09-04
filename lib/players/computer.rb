@@ -21,7 +21,7 @@ class Players
           }
           if selfwin!=[]
             n=selfwin.select{|n| board.valid_move?("#{n+1}")}
-            return "#{n[0]+1}"# if n!=[]
+            return "#{n[0]+1}"
           end
                                     #block check
           g.each{|combo|        
@@ -31,7 +31,7 @@ class Players
           }
           if blockwin!=[]
             n=blockwin.select{|n| board.valid_move?("#{n+1}")}
-            return "#{n[0]+1}" #if n!=[]
+            return "#{n[0]+1}"
           end
 
           x=rand(9)+1 until board.valid_move?(x)
