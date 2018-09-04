@@ -9,8 +9,8 @@ class Players
         x=['1','3','7','9'].sample until board.valid_move?(x)
         x
       else
-        selfwins=[]
-        blockwins=[]
+        selfwin=[]
+        blockwin=[]
         other=['X','O']-[self.token]
         g=Game::WIN_COMBINATIONS
                                     #win check
@@ -20,8 +20,8 @@ class Players
             puts selfwin
             end
           }
-          if selfwins!=[]
-            n=selfwins.select{|n| board.valid_move?("#{n+1}")}
+          if selfwin!=[]
+            n=selfwin.select{|n| board.valid_move?("#{n+1}")}
             puts "nwin is #{n}"
             return "#{n[0]+1}" if n!=[]
           end
