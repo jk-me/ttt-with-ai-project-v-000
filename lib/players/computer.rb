@@ -21,7 +21,7 @@ class Players
           }
           if selfwin!=[]
             n=selfwin.select{|n| board.valid_move?("#{n+1}")}
-            puts "nwin is #{n}"
+            #puts "nwin is #{n}"
             return "#{n[0]+1}" if n!=[]
           end
                                     #block check
@@ -32,7 +32,7 @@ class Players
           }
           if blockwin!=[]
             n=blockwin.select{|n| board.valid_move?("#{n+1}")}
-            puts "nblock is #{n}"
+            #puts "nblock is #{n}"
             return "#{n[0]+1}" if n!=[]
           end
 
