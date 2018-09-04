@@ -27,11 +27,11 @@ class Players
                                     #block check
           g.each{|combo|        
             if combo.select{|n| board.cells[n]==other[0]}.length==2
-            blockwin=combo
+            blockwin << combo
             end
           }
           if blockwin!=[]
-            n=blockwin.select{|n| board.valid_move?("#{n+1}")}
+            n=blockwin.select{|x| x.each{|n| board.valid_move?("#{n+1}")}}
             puts "nblock is #{n}"
             return "#{n[0]+1}" if n!=[]
           end
