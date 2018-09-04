@@ -65,7 +65,7 @@ class Game
     end
   end
   
-  def self.start 
+    def self.start
     compx=Players::Computer.new('X')
     compo=Players::Computer.new('O')
     humx=Players::Human.new('X')
@@ -73,34 +73,52 @@ class Game
     b=Board.new
 
     puts 'Hi tictactoe'
-    puts 'Enter number of players: (0,1,2)'
-    x=gets.strip.to_i
+    puts "Enter number of players: (0,1,2) or start 'wargames'"
+    x=gets.strip
+    x=x.to_i if x!='wargames'
     if x==0
       g=Game.new(compx,compo,b)
       g.play
     elsif x==1
-      puts "Who will play first (as X)? 'computer' or 'human'?"
+      puts "Who will play first (as X)? 'c'(omputer) or 'h'(uman)?"
       x=gets.strip
-      if x=='computer'
+      if x=='c'
         g=Game.new(compx,humo,b)
         g.play
-      elsif x=='human'
+      elsif x=='h'
         g=Game.new(humx,compo,b)
         g.play
-      else 
+      else
         puts 'invalid input, exiting'
       end
-    else x==2
+    elsif x==2
       g=Game.new
       g.play
+    elsif x=='wargames'
+      count=0
+      won=0
+      until count==100
+        g=Game.new(compx,compo,b)
+        g.play
+       #puts 'pie'
+        won+=1 if g.won?
+        count+=1
+        g.board.reset!
+      end
+      puts "#{won} games were won!"
+    else
+      puts 'invalid input, exiting'
     end
     puts "Enter 'y' to play again or any other key to exit."
     x=gets.strip
     if x=='y'
       Game.start
-    else 
+    else
       exit
     end
   end
+
+end
+
 
 end
