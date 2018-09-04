@@ -15,7 +15,7 @@ class Players
         g=Game::WIN_COMBINATIONS
                                     #win check
           g.each{|combo|       
-            if combo.select{|n| board.cells[n]==self.token}.length==2 and
+            if combo.select{|n| board.cells[n]==self.token}.length==2 and combo.select{|n| board.cells[n]==self.token}.length==2
             selfwin= combo
             end
           }
