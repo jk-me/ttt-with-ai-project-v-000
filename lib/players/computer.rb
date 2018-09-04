@@ -1,36 +1,44 @@
-class Players 
+class Players
   class Computer < Player
+    attr_accessor :selfwin, :blockwin
+    
     def move(board)
-      # x=rand(9)+1 until board.valid_move?(x)
-      # "#{x}"
       if board.valid_move?('5')==TRUE
         return '5'
-        puts "pie"
-      elsif board.turn_count<3
+      elsif board.turn_count < 2
         x=['1','3','7','9'].sample until board.valid_move?(x)
-      else 
-        g=Game::WIN_COMBINATIONS
+        x
+      else
+        #puts'pie'
+        selfwins=[]
+        blockwins=[]
         other=['X','O']-[self.token]
-        selfwin=nil 
-        blockwin=nil
-        #if win check 
-          g.each{|combo| 
+        g=Game::WIN_COMBINATIONS
+                                    #win check
+          g.each{|combo|       
             if combo.select{|n| board.cells[n]==self.token}.length==2
-            selfwin=combo 
-            end}
-          if selfwin!=[]
-            return selfwin.select{|n| board.valid_move?(n)} 
+            selfwins << combo
+            end
+          }
+          if selfwins!=[]
+            n=selfwins.select{|x| x.each{|n| board.valid_move?("#{n+1}")}}
+            puts "nwin is #{n}"
+            return "#{n[0]+1}" if n!=[]
           end
-        #elsif block check 
-          g.each{|combo| 
+                                    #block check
+          g.each{|combo|        
             if combo.select{|n| board.cells[n]==other[0]}.length==2
-            blockwin=combo 
-            end}
-          return blockwin.select{|n| board.valid_move?(n)} if blockwin!=[]
-        #else 
+            blockwin=combo
+            end
+          }
+          if blockwin!=[]
+            n=blockwin.select{|n| board.valid_move?("#{n+1}")}
+            puts "nblock is #{n}"
+            return "#{n[0]+1}" if n!=[]
+          end
+
           x=rand(9)+1 until board.valid_move?(x)
           return "#{x}"
-        #end 
       end
     end
   end
